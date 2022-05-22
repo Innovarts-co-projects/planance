@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
 
   :root {
 
-    font-family: sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 62.5%;
   }
 
@@ -20,6 +20,19 @@ const GlobalStyles = createGlobalStyle`
 
     background: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text};
+  }
+
+  @media (min-width: 1440px) {
+
+    :root {
+      font-size: 70%;
+    }
+  }
+  @media (min-width: 1800px) {
+
+    :root {
+      font-size: 80%;
+    }
   }
 `;
 
