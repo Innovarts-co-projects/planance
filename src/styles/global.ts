@@ -18,8 +18,8 @@ const GlobalStyles = createGlobalStyle`
 
   body {
 
-    background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
+    background: ${props => props.theme.color.background};
+    color: ${props => props.theme.color.text};
   }
 
   @media (min-width: 1440px) {
