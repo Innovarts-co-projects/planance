@@ -1,6 +1,8 @@
 import 'styled-components';
 
-import theme from './theme';
+import { lightTheme } from './theme';
+
+const theme = lightTheme;
 
 export type Theme = typeof theme;
 

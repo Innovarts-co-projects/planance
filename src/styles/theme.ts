@@ -1,7 +1,10 @@
-const theme = {
-  colors: {
+const lightTheme = {
+  color: {
     text: '#4B4A49',
     background: '#FDFBF9',
+
+    componentBackground: '#FFF',
+    placeholder: '#AEAEAE',
 
     green: '#1AB250',
     red: '#FF1A1A',
@@ -17,8 +20,8 @@ const theme = {
       lighter: '#FAFAFA',
     },
   },
-  effects: {},
-  borders: {},
+  effect: {},
+  border: {},
 };
 
-export default theme;
+export { lightTheme };
