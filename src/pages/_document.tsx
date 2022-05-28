@@ -86,7 +86,7 @@ class MyDocument extends Document {
           />
           <link rel="icon" sizes="32x32" href="favicon.ico" />
           <link rel="apple-touch-icon" sizes="32x32" href="favicon.ico" />
-          <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+          <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
           <link rel="apple-touch-icon" href="favicon.webp" />
 
           {/* Icons */}
@@ -149,6 +149,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+        <div id="loader-root" />
       </Html>
     );
   }
