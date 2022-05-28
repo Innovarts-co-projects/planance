@@ -18,8 +18,15 @@ const GlobalStyles = createGlobalStyle`
 
   body {
 
-    background: ${props => props.theme.color.background};
-    color: ${props => props.theme.color.text};
+    background:${({ theme }) => theme.color.background};
+    color:${({ theme }) => theme.color.text};
+  }
+
+  button {
+
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
   @media (min-width: 1440px) {
