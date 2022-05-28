@@ -8,6 +8,8 @@ const GlobalStyles = createGlobalStyle`
 
     padding: 0;
     margin: 0;
+
+    text-shadow: 1px 1px 2px 0px #0000001A;
   }
 
   :root {
