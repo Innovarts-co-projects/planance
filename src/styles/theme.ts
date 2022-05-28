@@ -1,8 +1,8 @@
 const lightTheme = {
   color: {
     text: '#4B4A49',
+    invertedText: '#FFF',
     background: '#FDFBF9',
-
     componentBackground: '#FFF',
     placeholder: '#AEAEAE',
 
@@ -12,6 +12,8 @@ const lightTheme = {
 
     primary: {
       main: '#FF7A00',
+      dark: '#F27400',
+      light: '#FF8719',
     },
 
     gray: {
