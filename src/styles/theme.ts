@@ -18,6 +18,7 @@ const lightTheme = {
 
     gray: {
       main: '#D9D9D9',
+      medium: '#EAE8E7',
       light: '#F6F4F3',
       lighter: '#FAFAFA',
     },
