@@ -1,6 +1,6 @@
 import MetaTitle from '../components/MetaTitle';
 
-import HomeContainer from '../styles/pages/home';
+import { HomeContainer } from '../styles/pages/home';
 
 function Home(): JSX.Element {
   return (

@@ -1,11 +1,12 @@
 import 'styled-components';
 
-import theme from './theme';
+import { lightTheme } from './theme';
+
+const theme = lightTheme;
 
 export type Theme = typeof theme;
 
 declare module 'styled-components' {
-  export interface DefaultTheme extends Theme {
-    '';
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface DefaultTheme extends Theme {}
 }
