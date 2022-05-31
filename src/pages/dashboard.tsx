@@ -2,14 +2,17 @@ import Image from 'next/image';
 
 import userPic from '../assets/icons/user-pic.svg';
 import entrance from '../assets/icons/entrance.svg';
-// import withdrawal from '../assets/icons/withdrawal.svg';
-// import balance from '../assets/icons/balance.svg';
+import withdrawal from '../assets/icons/withdrawal.svg';
+import balance from '../assets/icons/balance.svg';
+import investment from '../assets/icons/investment.svg';
 import plusIcon from '../assets/icons/plus.svg';
 import calendarIcon from '../assets/icons/calendar.svg';
 
 import MetaTitle from '../components/MetaTitle';
 
 import { DashboardContainer } from '../styles/pages/dashboard';
+import AssetDisplay from '../components/AssetDisplay';
+import Transaction from '../components/Transaction';
 
 function Dashboard() {
   return (
@@ -27,35 +30,36 @@ function Dashboard() {
             </h2>
           </div>
 
-          <div className="profile-info">
+          <button type="button" className="profile-info">
             <Image src={userPic} layout="raw" />
             <h2 className="user-name">
               Angela Smith
             </h2>
-          </div>
+          </button>
         </header>
 
         <section className="chart-section">
           <div className="chart-group">
             <div className="chart" />
+
             <div className="chart-info">
               <h3>Balance overview</h3>
 
               <ul>
-                <li>
-                  <div className="chart-indentifier" />
+                <li className="income-indentifier">
+                  <div className="chart-indentifier-icon" />
                   <span className="chart-category">
                     Income
                   </span>
                 </li>
-                <li>
-                  <div className="chart-indentifier" />
+                <li className="expense-indentifier">
+                  <div className="chart-indentifier-icon" />
                   <span className="chart-category">
                     Expenses
                   </span>
                 </li>
-                <li>
-                  <div className="chart-indentifier" />
+                <li className="investment-indentifier">
+                  <div className="chart-indentifier-icon" />
                   <span className="chart-category">
                     Investments
                   </span>
@@ -65,47 +69,27 @@ function Dashboard() {
           </div>
 
           <div className="balance-overview">
-            <div className="asset-display">
-              <header>
-                <div className="asset-icon">
-                  <Image src={entrance} layout="raw" />
-                </div>
-                <h3>Entrance</h3>
-              </header>
-              <main>
-                <h4 className="asset-value">
-                  R$ 3.500,00
-                </h4>
-              </main>
-            </div>
 
-            <div className="asset-display">
-              <header>
-                <div className="asset-icon">
-                  <Image src={entrance} layout="raw" />
-                </div>
-                <h3>Entrance</h3>
-              </header>
-              <main>
-                <h4 className="asset-value">
-                  R$ 3.500,00
-                </h4>
-              </main>
-            </div>
+            <AssetDisplay
+              assetIcon={entrance}
+              assetName="Entrance"
+              assetValue="R$ 3.500,00"
+              className="display-entrance"
+            />
 
-            <div className="asset-display">
-              <header>
-                <div className="asset-icon">
-                  <Image src={entrance} layout="raw" />
-                </div>
-                <h3>Entrance</h3>
-              </header>
-              <main>
-                <h4 className="asset-value">
-                  R$ 3.500,00
-                </h4>
-              </main>
-            </div>
+            <AssetDisplay
+              assetIcon={withdrawal}
+              assetName="Withdrawal"
+              assetValue="-R$ 2.000,00"
+              className="display-withdrawal"
+            />
+
+            <AssetDisplay
+              assetIcon={balance}
+              assetName="Balance"
+              assetValue="R$ 1.000,00"
+              className="display-balance"
+            />
           </div>
         </section>
 
@@ -124,18 +108,29 @@ function Dashboard() {
           <header>{' '}</header>
 
           <ul>
-            <li>
-              {' '}
-            </li>
-            <li>
-              {' '}
-            </li>
-            <li>
-              {' '}
-            </li>
-            <li>
-              {' '}
-            </li>
+            <Transaction
+              transactionDate="07/15/2022"
+              transactionIcon={entrance}
+              transactionType="Income"
+              transactionValue="R$ 3.500,00"
+              transactionDescription="Salario"
+            />
+            <Transaction
+              transactionDate="07/25/2022"
+              transactionIcon={withdrawal}
+              transactionType="Expense"
+              transactionValue="-R$ 1.500,00"
+              transactionDescription="Aluguel"
+            />
+
+            <Transaction
+              transactionDate="07/30/2022"
+              transactionIcon={investment}
+              transactionType="Investment"
+              transactionValue="R$ 500,00"
+              transactionDescription="CDB Mais Credito"
+            />
+
           </ul>
         </section>
       </main>

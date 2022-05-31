@@ -42,9 +42,15 @@ const DashboardContainer = styled.div`
       }
 
       .profile-info {
-        display: flex;
+        border: solid .1rem transparent;
+        border-radius: 1rem;
 
+        display: flex;
         align-items: center;
+
+        height: fit-content;
+
+        transition: background 0.25s ease-out;
 
         img {
           margin-right: 2rem;
@@ -53,6 +59,12 @@ const DashboardContainer = styled.div`
 
         h2 {
           font-size: 2rem;
+          min-width: 15rem;
+        }
+
+        &:hover {
+          background: ${({ theme }) => theme.color.gray.light};
+          border: solid 0.1rem ${({ theme }) => theme.color.gray.main};
         }
       }
     }
@@ -69,7 +81,7 @@ const DashboardContainer = styled.div`
         align-items: center;
 
         .chart {
-          background: #0005;
+          background: ${({ theme }) => theme.color.gray.main};
           border-radius: 50%;
 
           height: 17.5rem;
@@ -98,18 +110,45 @@ const DashboardContainer = styled.div`
 
             margin-bottom: 0.4rem;
 
-            .chart-indentifier {
-              background: red;
+            .chart-indentifier-icon {
+              background: ${({ theme }) => theme.color.gray.main};
               border-radius: 0.2rem;
-              height: 1.1rem;
-              width: 1.4rem;
+              height: 1.3rem;
+              width: 1.3rem;
 
               margin-right: 1rem;
             }
 
             span {
-              font-size: 1.2rem;
+              font-size: 1.3rem;
               font-weight: 500;
+            }
+
+            &.income-indentifier {
+              .chart-indentifier-icon {
+                background: ${({ theme }) => theme.color.green};
+              }
+
+              span {
+                color: ${({ theme }) => theme.color.green};
+              }
+            }
+            &.expense-indentifier {
+              .chart-indentifier-icon {
+                background: ${({ theme }) => theme.color.red};
+              }
+
+              span {
+                color: ${({ theme }) => theme.color.red};
+              }
+            }
+            &.investment-indentifier {
+              .chart-indentifier-icon {
+                background: ${({ theme }) => theme.color.purple};
+              }
+              span {
+                color: ${({ theme }) => theme.color.purple};
+              }
             }
           }
         }
@@ -117,55 +156,6 @@ const DashboardContainer = styled.div`
 
       .balance-overview {
         display: flex;
-
-        .asset-display {
-          background: ${({ theme }) => theme.color.gray.light};
-          border: solid 0.2rem ${({ theme }) => theme.color.gray.medium};
-          border-radius: 1rem;
-
-          display: flex;
-          flex-direction: column;
-
-          height: 10rem;
-          width: 18rem;
-
-          padding: 1rem;
-          margin-right: 1rem;
-
-          header {
-            display: flex;
-            align-items: center;
-
-            img {
-              margin-right: 1rem;
-              height: auto;
-              width: 2rem;
-            }
-
-            h3 {
-              font-size: 1.8rem;
-              font-weight: 500;
-            }
-          }
-
-          main {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            height: 100%;
-            width: 100%;
-
-            h4 {
-              font-size: 2rem;
-              font-weight: 600;
-            }
-          }
-
-          &:last-child {
-            margin-right: 0;
-          }
-        }
       }
     }
 
@@ -186,6 +176,8 @@ const DashboardContainer = styled.div`
 
         padding: 1rem;
 
+        transition: background 0.25s ease-out;
+
         img {
           margin-right: 1rem;
         }
@@ -194,7 +186,11 @@ const DashboardContainer = styled.div`
           font-size: 1.6rem;
           font-weight: 500;
         }
+        &:hover {
+          background: ${({ theme }) => theme.color.gray.main};
+        }
       }
+
       .add-transaction {
         background: ${({ theme }) => theme.color.primary.main};
         border-radius: 1rem;
@@ -210,6 +206,15 @@ const DashboardContainer = styled.div`
         img {
           margin-right: 1rem;
         }
+
+        transition: background 0.25s ease-out;
+
+        &:hover {
+          background: ${({ theme }) => theme.color.primary.dark};
+        }
+        &:active {
+          background: ${({ theme }) => theme.color.primary.light};
+        }
       }
     }
 
@@ -223,28 +228,6 @@ const DashboardContainer = styled.div`
         width: 100%;
 
         li {
-          background: ${({ theme }) => theme.color.gray.light};
-          border-radius: 1rem;
-
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          height: 5rem;
-          width: 100%;
-
-          margin-bottom: 1rem;
-
-          .transaction-category {
-          }
-          .transaction-value {
-          }
-          .transaction-data {
-          }
-          .transaction-description {
-          }
-          .options {
-          }
         }
       }
     }
