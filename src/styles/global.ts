@@ -24,11 +24,36 @@ const GlobalStyles = createGlobalStyle`
     color:${({ theme }) => theme.color.text};
   }
 
+  #app-root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+  }
+
   button {
 
     background: none;
     border: none;
     cursor: pointer;
+  }
+
+  .no-select, img, button {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    /* user-drag: none; */
   }
 
   @media (min-width: 1440px) {

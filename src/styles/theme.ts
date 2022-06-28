@@ -5,6 +5,7 @@ const lightTheme = {
     background: '#FDFBF9',
     componentBackground: '#FFF',
     placeholder: '#AEAEAE',
+    darkOverlay: '#0003',
 
     green: '#1AB250',
     red: '#FF1A1A',
@@ -21,6 +22,7 @@ const lightTheme = {
       medium: '#EAE8E7',
       light: '#F6F4F3',
       lighter: '#FAFAFA',
+      dark: '#787878',
     },
   },
   effect: {},
