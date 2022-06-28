@@ -3,22 +3,11 @@ import { createPortal } from 'react-dom';
 
 import { FullScreenLoaderContainer, LoadAnimation } from './FullScreenLoaderStyles';
 
-interface FullScreenLoaderProps {
-
-  render: boolean;
-}
-
-function FullScreenLoader({ render }: FullScreenLoaderProps) {
+function FullScreenLoader() {
 
   const [documentIsReady, setDocumentIsReady] = useState(false);
-
   useEffect(() => { if (typeof document === 'object') setDocumentIsReady(true); }, []);
-
-  if (!render) { return null; }
-
-  if (!documentIsReady) {
-    return null;
-  }
+  if (!documentIsReady) return null;
 
   return createPortal(
     <FullScreenLoaderContainer>
