@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { memo } from 'react';
 
 import { AssetDisplayContainer } from './assetDisplayStyles';
 
@@ -31,4 +32,4 @@ function AssetDisplay({
   );
 }
 
-export default AssetDisplay;
+export default memo(AssetDisplay);
