@@ -1,0 +1,29 @@
+{
+  "user": {
+    "name": "Gabriel Silva",
+    "email": "talktogabriel@pm.me",
+    "transactions": [
+      {
+        "transactionId": "7a126069-9d51-488f-93b5-26858eefc11e",
+        "type": "income",
+        "value": "3000",
+        "date": "23/06/2003",
+        "description": "Salary"
+      },
+      {
+        "transactionId": "6bd96113-705f-4e85-bcb7-7410fb1e0763",
+        "type": "expense",
+        "value": "1500",
+        "date": "03/07/2003",
+        "description": "Rent"
+      },
+      {
+        "transactionId": "5b63186c-e27d-40bc-87d4-3bcb3561a85e",
+        "type": "investment",
+        "value": "500",
+        "date": "10/07/2003",
+        "description": "Investment"
+      }
+    ]
+  }
+}
