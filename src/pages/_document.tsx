@@ -144,12 +144,14 @@ class MyDocument extends Document {
           {/*  */}
           <title>Planance | Finance Planner</title>
         </Head>
-
         <body>
-          <Main />
-          <NextScript />
+          <div id="app-root">
+            <Main />
+            <NextScript />
+          </div>
+          <div id="modal-root" />
+          <div id="loader-root" />
         </body>
-        <div id="loader-root" />
       </Html>
     );
   }
