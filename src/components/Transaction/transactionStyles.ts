@@ -23,6 +23,8 @@ const TransactionContainer = styled.li`
     font-weight: 500;
   }
   .transaction-type {
+    text-transform: capitalize;
+
     img {
       margin-right: 1rem;
     }
