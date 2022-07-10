@@ -1,21 +1,17 @@
 import Image from 'next/image';
 import React, {
-  useCallback, useEffect, useRef, useState,
+  useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import axios from 'axios';
 
 // types
-import { UserData } from '../models/userData';
-
-// utils
-import currencyFormatter from '../utils/currencyFormatter';
+import { UserData, UserTransaction } from '../models/userData';
 
 // images
 import userPic from '../assets/icons/user-pic.svg';
 import entrance from '../assets/icons/entrance.svg';
 import withdrawal from '../assets/icons/withdrawal.svg';
 import balance from '../assets/icons/balance.svg';
-import investment from '../assets/icons/investment.svg';
 import plusIcon from '../assets/icons/plus.svg';
 import calendarIcon from '../assets/icons/calendar.svg';
 
@@ -25,7 +21,7 @@ import RadialChart from '../components/RadialChart';
 import AssetDisplay from '../components/AssetDisplay';
 import Transaction from '../components/Transaction';
 import UserSettings from '../components/UserSettings';
-import MonthSelector from '../components/MonthSelector';
+import MonthSelector, { months } from '../components/MonthSelector';
 import TransactionModifier from '../components/TransactionModifierModal';
 
 // local styles
@@ -36,41 +32,46 @@ import {
   MenusSection,
   TransactionsSection,
 } from '../styles/pages/dashboard';
+import getMonth from '../utils/getMonth';
 
 function Dashboard() {
+
+  const actualMonth = useMemo(() => (new Date().getMonth() + 1), []);
 
   // refs
   const settingsTriggerRef = useRef();
 
   // STATES
+  // -common
+
   // - renders
   const [renderSettings, setRenderSettings] = useState(false);
-  const handleRenderSettings = useCallback(() => {
+  const onRenderSettings = useCallback(() => {
     setRenderSettings(prevState => !prevState);
   }, []);
 
   const [renderMonthSelector, setRenderMonthSelector] = useState(false);
-  const handleRenderMonthSelector = useCallback(() => {
+  const onRenderMonthSelector = useCallback(() => {
 
     setRenderMonthSelector(prevState => !prevState);
   }, [renderMonthSelector]);
 
   const [renderNewTransaction, setRenderNewTransaction] = useState(false);
-  const handleRenderNewTransaction = useCallback(() => {
+  const onRenderNewTransaction = useCallback(() => {
 
     setRenderNewTransaction(prevState => !prevState);
   }, [renderNewTransaction]);
 
-  const [,] = useState(false); // update transaction
-
   // - data
   const [userAccountData, setUserAccountData] = useState<UserData>();
 
-  const [selectedMonth, setSelectedMonth] = useState<string>('Jul');
-  const handleSelectedMonth = useCallback((value: string) => {
+  const [filteredMonths, setFilteredMonths] = useState<UserTransaction[]>();
+
+  const [selectedMonth, setSelectedMonth] = useState<string>(months[actualMonth - 1]);
+  const onSelectMonth = useCallback((value: string) => {
 
     setSelectedMonth(value);
-    handleRenderMonthSelector();
+    onRenderMonthSelector();
   }, [selectedMonth]);
 
   // EFFECTS
@@ -81,6 +82,23 @@ function Dashboard() {
       setUserAccountData(reqData.data.user);
     })();
   }, []);
+
+  useEffect(() => {
+
+    if (!userAccountData) return;
+
+    setFilteredMonths(() => {
+
+      const filteredData = userAccountData?.transactions
+        .filter(transaction => getMonth(transaction.date) === (months.indexOf(selectedMonth) + 1));
+
+      if (filteredMonths !== filteredData) {
+        return filteredData;
+      }
+
+      return filteredMonths;
+    });
+  }, [userAccountData, selectedMonth]);
 
   return (
     <DashboardContainer>
@@ -104,7 +122,7 @@ function Dashboard() {
             <button
               type="button"
               className="profile-info"
-              onClick={handleRenderSettings}
+              onClick={onRenderSettings}
               ref={settingsTriggerRef}
             >
 
@@ -120,12 +138,11 @@ function Dashboard() {
                 <UserSettings
                   userName={userAccountData?.name}
                   userEmail={userAccountData?.email}
-                  onModalRender={handleRenderSettings}
+                  onModalRender={onRenderSettings}
                   triggerRef={settingsTriggerRef?.current}
                 />
               )
             }
-
           </div>
         </PageHeader>
 
@@ -204,8 +221,8 @@ function Dashboard() {
             {
               renderMonthSelector && (
                 <MonthSelector
-                  valueSetter={handleSelectedMonth}
-                  onModalRender={handleRenderMonthSelector}
+                  valueSetter={onSelectMonth}
+                  onModalRender={() => onRenderMonthSelector()}
                 />
               )
             }
@@ -217,7 +234,7 @@ function Dashboard() {
             <button
               type="button"
               className="add-transaction"
-              onClick={handleRenderNewTransaction}
+              onClick={onRenderNewTransaction}
             >
               <Image src={plusIcon} layout="raw" />
               <span>Add transaction</span>
@@ -226,7 +243,7 @@ function Dashboard() {
               renderNewTransaction && (
                 <TransactionModifier
                   modalTitle="New Transaction"
-                  onModalRender={handleRenderNewTransaction}
+                  onModalRender={onRenderNewTransaction}
                 />
               )
             }
@@ -241,18 +258,11 @@ function Dashboard() {
           <ul>
 
             {
-              userAccountData?.transactions.map((transaction) => (
+              filteredMonths && filteredMonths.map((transaction) => (
+
                 <Transaction
                   key={transaction.transactionId}
-                  transactionDate={transaction.date}
-                  transactionIcon={
-                    (transaction.type === 'income' && entrance)
-                    || (transaction.type === 'investment' && investment)
-                    || (transaction.type === 'expense' && withdrawal)
-                  }
-                  transactionType={transaction.type}
-                  transactionValue={currencyFormatter({ currency: 'BRL', value: transaction.value })}
-                  transactionDescription={transaction.description}
+                  transaction={transaction}
                 />
               ))
             }

@@ -13,7 +13,6 @@ const FullScreenLoaderContainer = styled.div`
   width: 100vw;
 
   position: fixed;
-  inset: 0;
   top: 0;
   left: 0;
   z-index: 500;

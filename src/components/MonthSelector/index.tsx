@@ -7,14 +7,14 @@ interface MonthSelectorProps {
   onModalRender: () => void;
 }
 
+export const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 function MonthSelector(
   {
     valueSetter,
     onModalRender,
   }: MonthSelectorProps,
 ) {
-
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   const modalRef = useClickOutside(() => {
     onModalRender();

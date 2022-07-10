@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { appearAnimation } from '../../styles/animations';
 
 const MonthSelectorContainer = styled.div`
+  animation: ${appearAnimation} 0.25s backwards;
   background: ${({ theme }) => theme.color.componentBackground};
   box-shadow: 0.5rem 0.5rem 1rem #0001;
   border-radius: 1rem;
@@ -9,8 +11,7 @@ const MonthSelectorContainer = styled.div`
 
   position: absolute;
   left: 10%;
-  top: 50%;
-  transform: translateY(-50%);
+  top: -80%;
 
   .months-block {
     display: flex;

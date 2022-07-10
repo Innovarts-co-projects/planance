@@ -1,7 +1,17 @@
 import { memo } from 'react';
+import Image from 'next/image';
 
+// hooks
 import useClickOutside from '../../hook/useClickOutside';
 
+// components
+import Button from '../Button';
+
+// images
+import userPic from '../../assets/icons/user-pic.svg';
+import settingsIcon from '../../assets/icons/settings.svg';
+
+// local styles
 import { UserSettingsContainer } from './userSettingsStyles';
 
 interface UserSettingsProps {
@@ -27,7 +37,23 @@ function UserSettings(
   return (
     <UserSettingsContainer ref={modalRef}>
       <header>
-        {' '}
+
+        <div className="user-info">
+          <div className="user-pic-container">
+            <Image src={userPic} layout="raw" />
+          </div>
+          <h2 className="user-name">
+            {userName}
+          </h2>
+        </div>
+
+        <button
+          disabled
+          type="button"
+          className="app-config"
+        >
+          <Image src={settingsIcon} layout="raw" />
+        </button>
       </header>
 
       <form onSubmit={() => ''}>
@@ -46,9 +72,9 @@ function UserSettings(
           <span>Password:</span>
           <input disabled type="text" placeholder="●●●●●●●●●●●●●" id="user-password-input" />
         </label>
-        <button type="submit">
+        <Button disabled type="submit">
           Save Changes
-        </button>
+        </Button>
       </form>
     </UserSettingsContainer>
   );

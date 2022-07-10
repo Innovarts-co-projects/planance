@@ -57,20 +57,37 @@ const PageHeader = styled.header`
       transition: background 0.25s ease-out;
 
       .user-pic-container {
-        border-radius: 0.5rem;
+        border-radius: 1rem;
+
         display: flex;
 
-        height: 5rem;
-        width: 5rem;
+        height: 4.5rem;
+        width: 4.5rem;
 
-        margin-right: 1rem;
+        margin: 0.3rem 1rem 0.3rem 0.3rem;
+
+        position: relative;
+        overflow: hidden;
 
         img {
-          border-radius: 1rem;
-          box-shadow: 0 0 5px #0002;
-          margin: auto;
+          margin: auto auto 0;
           height: 90%;
           width: 90%;
+        }
+
+        &::after {
+          content: '';
+          box-shadow: inset 0 -.5rem 1rem #00000011;
+
+          display: flex;
+
+          height: 100%;
+          width: 100%;
+
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 600;
         }
       }
 
