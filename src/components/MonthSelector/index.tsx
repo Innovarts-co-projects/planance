@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import useClickOutside from '../../hook/useClickOutside';
+import useClickOutside from '../../hooks/useClickOutside';
 import { MonthSelectorContainer } from './monthSelectorStyles';
 
 interface MonthSelectorProps {

@@ -1,4 +1,4 @@
-import useClickOutside from '../../../../hook/useClickOutside';
+import useClickOutside from '../../../../hooks/useClickOutside';
 import { OptionsModalContainer, OptionItem } from './optionsModalStyles';
 
 export interface Option {

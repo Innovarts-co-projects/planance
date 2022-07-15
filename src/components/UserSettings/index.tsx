@@ -2,7 +2,7 @@ import { memo } from 'react';
 import Image from 'next/image';
 
 // hooks
-import useClickOutside from '../../hook/useClickOutside';
+import useClickOutside from '../../hooks/useClickOutside';
 
 // components
 import Button from '../Button';

@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 
 // hooks
 import { useTheme } from 'styled-components';
-import useClickOutside from '../../hook/useClickOutside';
+import useClickOutside from '../../hooks/useClickOutside';
 
 // models
 import { UserTransaction } from '../../models/userData';
